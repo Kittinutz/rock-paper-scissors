@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
-import { Box, Grid, Stack, Typography } from '@mui/material';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Grid, Stack, Typography } from '@mui/material';
+import { useCallback, useMemo, useState } from 'react';
 import Selection from './components/Selection';
 import ScoreBoard from './components/ScoreBoard';
 const getScore = (scoreBoardArr, mappingScore) => {
