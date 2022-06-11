@@ -2,7 +2,7 @@
   "name": "pao-ying-choop",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kittinutz.github.io",
+  "homepage": "https://kittinutz.github.io/rock-paper-scissors",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
@@ -40,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
