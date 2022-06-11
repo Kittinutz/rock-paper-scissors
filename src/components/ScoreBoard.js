@@ -1,9 +1,9 @@
 import { Grid, Box, Typography } from "@mui/material"
-import { Fragment, memo } from "react"
+import { memo } from "react"
 
 const ScoreBoard = ({ scoreBoard, robotScore, humanScore, mappingScore }) => {
   return (
-    <Box>
+    <Box minHeight="348px">
       <Typography> Score board</Typography>
       <Grid container >
         <Grid item xs={6}>
@@ -17,24 +17,45 @@ const ScoreBoard = ({ scoreBoard, robotScore, humanScore, mappingScore }) => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container overflow="scroll" minHeight="300px" maxHeight="300px" sx={{ overflowX: 'hidden' }}>
-        {scoreBoard.map((selected, index) => {
+      <Box my={2}>
+        <Grid container >
+          <Grid item xs={4}>
+            <Typography>Human pick</Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography>Robot pick</Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <Typography>Result</Typography>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box maxHeight="300px" sx={{ overflowX: 'hidden' }}>
+        {scoreBoard.reverse().map((selected, index) => {
           const [human, robot] = selected.split('-')
+          const isDraw = human === robot
+          const isLose = !isDraw && mappingScore[selected] !== 1;
           return (
-            <Fragment key={`${selected}-${index}`}>
-              <Grid item xs={4} >
-                {human}
+            <Box key={index}>
+              <Grid container >
+                <Grid item xs={4} >
+                  {human}
+                </Grid>
+                <Grid item xs={4}>
+                  {robot}
+                </Grid>
+                <Grid item xs={4}>
+                  <Typography variant="body1">
+                    {isDraw ? 'Draw' : ''}
+                    {isLose ? 'Robot win' : ''}
+                    {mappingScore[selected] === 1 ? 'Human Win' : ""}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item xs={4}>
-                {robot}
-              </Grid>
-              <Grid item xs={4}>
-                {mappingScore[selected] == 1 ? 'Human Win' : ""}
-              </Grid>
-            </Fragment>
+            </Box>
           )
         })}
-      </Grid>
+      </Box>
     </Box >
   )
 }
