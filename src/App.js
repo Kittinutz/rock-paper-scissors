@@ -75,7 +75,7 @@ function App() {
 
   useEffect(() => {
     function initialRemainingScore() {
-      const scoreRemain = localStorage.getItem('scoreRemain');
+      const scoreRemain = localStorage.getItem('scoreRemain') || JSON.stringify([]);
       setScoreBoard(JSON.parse(scoreRemain))
     }
     initialRemainingScore();
