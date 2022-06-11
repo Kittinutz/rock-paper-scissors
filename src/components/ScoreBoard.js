@@ -31,7 +31,7 @@ const ScoreBoard = ({ scoreBoard, robotScore, humanScore, mappingScore }) => {
         </Grid>
       </Box>
       <Box maxHeight="300px" sx={{ overflowX: 'hidden' }}>
-        {scoreBoard.reverse().map((selected, index) => {
+        {scoreBoard.map((selected, index) => {
           const [human, robot] = selected.split('-')
           const isDraw = human === robot
           const isLose = !isDraw && mappingScore[selected] !== 1;
